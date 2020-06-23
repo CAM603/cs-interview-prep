@@ -8,11 +8,15 @@ def addTwoNumbers(l1, l2):
     dic = {l1: [], l2: []}
 
     # put node values in a stack
-    current = (l1, l2)
-    while current[0] is not None:
-        dic[l1].append(current[0].val)
-        dic[l2].append(current[1].val)
-        current = (current[0].next, current[1].next)
+    current = l1
+    while current is not None:
+        dic[l1].append(current.val)
+        current = current.next
+
+    current = l2
+    while current is not None:
+        dic[l2].append(current.val)
+        current = current.next
 
     str_one = ""
     str_two = ""
