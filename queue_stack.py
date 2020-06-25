@@ -4,7 +4,8 @@ class MyQueue(object):
         """
         Initialize your data structure here.
         """
-        self.storage = []
+        self.s1 = []
+        self.s2 = []
 
     def push(self, x):
         """
@@ -12,28 +13,35 @@ class MyQueue(object):
         :type x: int
         :rtype: None
         """
-        self.storage.append(x)
+        if not self.s1:
+            self.s1.append(x)
+        else:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+            self.s1.append(x)
+            while self.s2:
+                self.s1.append(self.s2.pop())
 
     def pop(self):
         """
         Removes the element from in front of queue and returns that element.
         :rtype: int
         """
-        return self.storage.pop(0)
+        return self.s1.pop()
 
     def peek(self):
         """
         Get the front element.
         :rtype: int
         """
-        return self.storage[0]
+        return self.s1[-1]
 
     def empty(self):
         """
         Returns whether the queue is empty.
         :rtype: bool
         """
-        return len(self.storage) == 0
+        return len(self.s1) == 0
 
 
 obj = MyQueue()
